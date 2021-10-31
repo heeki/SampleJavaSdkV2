@@ -1,0 +1,6 @@
+# directories
+target
+tmp
+
+# files
+dependency-reduced-pom.xml
