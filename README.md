@@ -13,7 +13,7 @@ A helper class was created for constructing the enhanced client, which is then i
 ## S3 Transfer Manager
 The [developer guide for S3 Transfer Manager](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/transfer-manager.html) was used as a reference when creating this sample application.
 
-A helper class was created for constructing the transfer manager client, which is then used for downloading large files from an S3 bucket, as identified by the `O_FILE` environment variable.
+A helper class was created for constructing the transfer manager client, which is then used for downloading large files from an S3 bucket, as identified by the `O_S3_FILE` environment variable.
 
 ## Deploy Infrastructure
 First deploy the `iac/dynamodb.yaml` template into your AWS account. To simplify the deployment, configure an `etc/environment.sh` configuration file as follows.

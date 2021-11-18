@@ -20,12 +20,12 @@ public class S3Helper {
     private final Region region = Region.US_EAST_1;
     private final S3ClientConfiguration config;
     private final S3TransferManager tm;
-    private final String s3_bucket;
-    private final String s3_prefix;
+    private final String bucket;
+    private final String prefix;
 
     public S3Helper(String bucket, String prefix) {
-        this.s3_bucket = bucket;
-        this.s3_prefix = prefix;
+        this.bucket = bucket;
+        this.prefix = prefix;
         this.config = S3ClientConfiguration.builder()
             .region(region)
             .maxConcurrency(10)
@@ -40,7 +40,7 @@ public class S3Helper {
     public void executeS3Transfer(String file) {
         DownloadRequest dlr = DownloadRequest.builder()
             .destination(Paths.get("tmp/" + file))
-            .getObjectRequest(b -> b.bucket(this.s3_bucket).key(this.s3_prefix + file))
+            .getObjectRequest(b -> b.bucket(this.bucket).key(this.prefix + file))
             .build();
         Download dl = tm.download(dlr);
         CompletedDownload dlc = dl.completionFuture().join();
