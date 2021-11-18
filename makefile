@@ -4,7 +4,7 @@ mvn: mvn.package mvn.exec
 mvn.package:
 	mvn clean package
 mvn.exec:
-	rm -f tmp/A001_C013_121586.mov
+	rm -f tmp/${P_S3_FILE}
 	mvn exec:java
 
 ddb: ddb.package ddb.deploy

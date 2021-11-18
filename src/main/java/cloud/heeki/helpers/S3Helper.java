@@ -20,10 +20,12 @@ public class S3Helper {
     private final Region region = Region.US_EAST_1;
     private final S3ClientConfiguration config;
     private final S3TransferManager tm;
-    private final String s3_bucket = "higs-assets";
-    private final String s3_prefix = "ffmpeg/";
+    private final String s3_bucket;
+    private final String s3_prefix;
 
-    public S3Helper() {
+    public S3Helper(String bucket, String prefix) {
+        this.s3_bucket = bucket;
+        this.s3_prefix = prefix;
         this.config = S3ClientConfiguration.builder()
             .region(region)
             .maxConcurrency(10)
