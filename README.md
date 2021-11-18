@@ -42,3 +42,37 @@ export P_S3_FILE=[name_of_your_s3_object]
 ```
 
 After setting these environment variables, you can execute `make mvn` to package your application and execute the jar artifact.
+
+## Perform Static Code Analysis
+First download and setup spotbugs and pmd.
+
+```bash
+# set paths
+BASE_DIR=[absolute_path_to_your_base_directory]
+PROJECT_DIR=[relative_path_to_your_project_directory]
+
+# set base directory
+cd ${BASE_DIR}/${PROJECT_DIR}
+curl -OL https://github.com/spotbugs/spotbugs/releases/download/4.5.0/spotbugs-4.5.0.tgz
+curl -OL https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.40.0/pmd-bin-6.40.0.zip
+
+# unpackage spotbugs
+tar xvf spotbugs-4.5.0.tgz
+cd spotbugs-4.5.0 && export SPOTBUGS_HOME=$(pwd) && echo $SPOTBUGS_HOME && cd ..
+
+# unpackage pmd
+unzip pmd-bin-6.40.0.zip
+cd pmd-bin-6.40.0 && export PMD_HOME=$(pwd) && echo $PMD_HOME && cd ..
+```
+
+Update your `etc/environment.sh` file with the following variables:
+
+```bash
+SPOTBUGS_HOME=${BASE_DIR}/spotbugs-4.5.0
+PMD_HOME=${BASE_DIR}/pmd-bin-6.40.0
+P_TARGET_JAR=target/[name_of_your_jar_file]
+P_SOURCE_DIR=src
+```
+
+To execute spotbugs analysis, run `make spotbugs`.
+To execute pmd analysis, run `make pmd`.

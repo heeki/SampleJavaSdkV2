@@ -14,3 +14,8 @@ ddb.deploy:
 	sam deploy -t ${DDB_OUTPUT} --stack-name ${DDB_STACK} --parameter-overrides ${DDB_PARAMS} --capabilities CAPABILITY_NAMED_IAM
 ddb.describe:
 	aws dynamodb describe-table --table-name ${O_DDB_TABLE} | jq
+
+spotbugs:
+	java -jar ${SPOTBUGS_HOME}/lib/spotbugs.jar -textui ${P_TARGET_JAR} | tee target/spotsbugs.txt
+pmd:
+	${PMD_HOME}/bin/run.sh pmd -d ${P_SOURCE_DIR} -R rulesets/java/quickstart.xml -f json | tee target/pmd.json | jq
