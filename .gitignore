@@ -1,6 +1,8 @@
 # directories
+etc
 target
 tmp
 
 # files
+iac/*_output.yaml
 dependency-reduced-pom.xml
