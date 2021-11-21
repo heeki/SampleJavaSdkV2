@@ -42,7 +42,7 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- AWS SDK Dependencies -->
+        <!-- aws sdk dependencies -->
         <dependency>
           <groupId>software.amazon.awssdk</groupId>
           <artifactId>s3-transfer-manager</artifactId>
@@ -79,7 +79,7 @@
             <version>${aws.java.sdk.version}</version>
         </dependency> -->
 
-        <!-- Logging Dependencies -->
+        <!-- logging dependencies -->
         <dependency>
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-api</artifactId>
@@ -90,7 +90,7 @@
           <artifactId>slf4j-simple</artifactId>
           <version>${slf4j.version}</version>
         </dependency>
-        <!-- Test Dependencies -->
+        <!-- test dependencies -->
         <dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter</artifactId>
@@ -126,7 +126,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Exec Plugins -->
+            <!-- exec plugins -->
             <plugin>
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>exec-maven-plugin</artifactId>
@@ -143,7 +143,7 @@
                 <cleanupDaemonThreads>false</cleanupDaemonThreads>
               </configuration>
             </plugin>
-            <!-- Analysis Plugins -->
+            <!-- analysis plugins -->
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-site-plugin</artifactId>
