@@ -2,19 +2,19 @@ package cloud.heeki.helpers;
 
 import cloud.heeki.beans.Item;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.List;
+// import java.time.Instant;
+// import java.time.LocalDate;
+// import java.time.LocalDateTime;
+// import java.time.ZoneOffset;
+// import java.util.List;
 import java.util.UUID;
 
 
-import software.amazon.awssdk.awscore.retry.AwsRetryPolicy;
-import software.amazon.awssdk.core.client.config.SdkClientConfiguration;
+// import software.amazon.awssdk.awscore.retry.AwsRetryPolicy;
+// import software.amazon.awssdk.core.client.config.SdkClientConfiguration;
 import software.amazon.awssdk.http.SdkHttpClient;
 import software.amazon.awssdk.http.apache.ApacheHttpClient;
-import software.amazon.awssdk.regions.Region;
+// import software.amazon.awssdk.regions.Region;
 
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
@@ -27,20 +27,20 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition;
 import software.amazon.awssdk.services.dynamodb.model.DescribeTableRequest;
 import software.amazon.awssdk.services.dynamodb.model.DynamoDbException;
-import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputDescription;
+// import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputDescription;
 import software.amazon.awssdk.services.dynamodb.model.TableDescription;
 
 
 public class DynamoDbHelper {
-    private final Region region = Region.US_EAST_1;
+    // private final Region region = Region.US_EAST_1;
     private final String table;
-    private final SdkHttpClient apacheClient;
     private final DynamoDbClient dynamoClient;
     private final DynamoDbEnhancedClient enhancedClient;
 
+    /** constructor */
     public DynamoDbHelper(String table) {
         this.table = table;
-        this.apacheClient = ApacheHttpClient.builder().build();
+        SdkHttpClient apacheClient = ApacheHttpClient.builder().build();
         this.dynamoClient = DynamoDbClient.builder()
             .httpClient(apacheClient)
             .build();
@@ -49,16 +49,19 @@ public class DynamoDbHelper {
             .build();
     }
 
+    /** main executor for testing actions */
     public void executeDynamoDBActions(String message) {
         this.putItem(message);
         this.describeDynamoDbTable();
-        this.describeClient();
+        // this.describeClient();
     }
 
+    /** close the clinet */
     public void close() {
         this.dynamoClient.close();
     }
 
+    /** sample method to test the DescribeTableRequest request */
     private void describeDynamoDbTable() {
         DescribeTableRequest request = DescribeTableRequest.builder()
             .tableName(this.table)
@@ -81,6 +84,7 @@ public class DynamoDbHelper {
         }
     }
 
+    /** sample method to test the BatchWriteItemEnhancedRequest request */
     private void putItem(String message) {
         try {
             String uuid = UUID.randomUUID().toString();
@@ -103,7 +107,8 @@ public class DynamoDbHelper {
         }
     }
 
-    private void describeClient() {
-        // SdkClientConfiguration config = this.dynamoClient.getGlobalInterceptors();
-    }
+    /** sample method to extract client information */
+    // private void describeClient() {
+    //     SdkClientConfiguration config = this.dynamoClient.getGlobalInterceptors();
+    // }
 }

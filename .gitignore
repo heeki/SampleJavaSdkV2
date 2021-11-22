@@ -4,5 +4,6 @@ target
 tmp
 
 # files
+notes.md
 iac/*_output.yaml
 dependency-reduced-pom.xml

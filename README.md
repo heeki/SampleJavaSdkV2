@@ -76,3 +76,11 @@ P_SOURCE_DIR=src
 
 To execute spotbugs analysis, run `make spotbugs`.
 To execute pmd analysis, run `make pmd`.
+
+## PMD Output
+```bash
+# pmd-bin-6.40.0/bin/run.sh pmd -d src -R rulesets/java/quickstart.xml -f text
+Nov 21, 2021 6:26:38 PM net.sourceforge.pmd.PMD encourageToUseIncrementalAnalysis
+WARNING: This analysis could be faster, please consider using Incremental Analysis: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_incremental_analysis.html
+#
+```
