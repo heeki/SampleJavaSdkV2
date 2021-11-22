@@ -77,6 +77,9 @@ P_SOURCE_DIR=src
 To execute spotbugs analysis, run `make spotbugs`.
 To execute pmd analysis, run `make pmd`.
 
+## Spotbugs Output
+The output for the Spotbugs analysis was too long for inclusion directly in this report and has instead been included in this [gist](https://gist.github.com/heeki/d6ea6903eff6e139997c3557d45be7dd).
+
 ## PMD Output
 ```bash
 # pmd-bin-6.40.0/bin/run.sh pmd -d src -R rulesets/java/quickstart.xml -f text
